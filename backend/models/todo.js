@@ -4,14 +4,13 @@ const Schema = mongoose.Schema;
 const TodoSchema = new Schema({
 	action: {
 		type: String,
-		required: [true, "The todo tetx field is required"]
+		required: [true, "The todo text field is required"]
 	},
 	done: {
 		type: Boolean,
-		required: [true, ""],
 		default: false
 	}
-});
+}, { timestamps: true });
 
 const Todo = mongoose.model('todo', TodoSchema);
 
