@@ -9,9 +9,11 @@ require('dotenv').config();
 
 const app = express();
 
+const atlas = process.env.ATLAS_URI;
+
 app.use(cors());
 
-mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(atlas, { useNewUrlParser: true, useCreateIndex: true });
 
 const connection = mongoose.connection;
 connection.once('open', async () => {});
