@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const request = require('supertest');
 const app = require('../index');
+
 const Todo = require('../models/todo');
 
 describe('Todo CRUD Endpoints', () => {
@@ -9,20 +10,15 @@ describe('Todo CRUD Endpoints', () => {
 		const res = await request(app)
 			.post('/api/todos/create')
 			.send({
-				action: "Test Todo Item"
+				action: 'Test Todo Item',
 			});
 		expect(res.statusCode).toEqual(201);
 		expect(res.body).toHaveProperty('_id');
 	});
 
 	afterAll(async () => {
-		try {
-			const { todos } = mongoose.connection.collections;
-			await todos.drop();
-			await mongoose.disconnect();
-		} catch (error) {
-			console.log(`Error: {error}`);
-			throw error;
-		}
+		const { todos } = mongoose.connection.collections;
+		await todos.drop();
+		await mongoose.disconnect();
 	});
-})
+});

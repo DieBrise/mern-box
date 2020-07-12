@@ -1,0 +1,15 @@
+{
+	"extends": ["eslint:recommended", "airbnb-base"],
+	"parserOptions": {
+		"ecmaVersion": 2017
+	},
+	"rules": {
+		"indent": [1, "tab"],
+		"no-tabs": 0,
+		"no-underscore-dangle": 0
+	},
+	"env": {
+		"es6": true,
+		"jest": true
+	}
+}

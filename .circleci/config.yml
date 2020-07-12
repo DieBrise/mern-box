@@ -11,6 +11,7 @@ jobs:
           steps:
             - run: cd backend && touch .env && echo "ATLAS_URI=${ATLAS_URI}" >> .env
             - run: cd backend && npm install
+            - run: cd backend && npm run lint
             - run: cd backend && npm test
 workflows:
     build-and-test-backend:

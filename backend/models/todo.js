@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const TodoSchema = new Schema({
 	action: {
 		type: String,
-		required: [true, "The todo text field is required"]
+		required: [true, 'The todo text field is required'],
 	},
 	done: {
 		type: Boolean,
-		default: false
-	}
+		default: false,
+	},
 }, { timestamps: true });
 
 const Todo = mongoose.model('todo', TodoSchema);
