@@ -18,7 +18,7 @@ router.get('/todos/:id', (req, res) => {
 router.post('/todos/create', (req, res, next) => {
 	if(req.body.action){
 		Todo.create(req.body)
-			.then(data => res.json(data))
+			.then(data => res.status(201).json(data))
 			.catch(next);
 	} else {
 		res.json({
