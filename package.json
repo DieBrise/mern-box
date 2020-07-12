@@ -1,0 +1,19 @@
+{
+  "name": "todo-mern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "backend/npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DieBrise/mern-box.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DieBrise/mern-box/issues"
+  },
+  "homepage": "https://github.com/DieBrise/mern-box#readme"
+}
