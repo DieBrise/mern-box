@@ -1,11 +1,16 @@
+process.env.NODE_ENV = 'test';
+
 const mongoose = require('mongoose');
 const request = require('supertest');
 const app = require('../index');
 
 const Todo = require('../models/todo');
 
+let testId;
+
 describe('Todo CRUD Endpoints', () => {
 	beforeAll(async () => { await Todo.remove(); });
+
 	it('should create a new Todo post', async () => {
 		const res = await request(app)
 			.post('/api/todos/create')
@@ -14,6 +19,40 @@ describe('Todo CRUD Endpoints', () => {
 			});
 		expect(res.statusCode).toEqual(201);
 		expect(res.body).toHaveProperty('_id');
+
+		testId = res.body._id;
+	});
+
+	it('should retrieve a list of Todo posts', async () => {
+		const res = await request(app)
+			.get('/api/todos');
+		expect(res.statusCode).toEqual(200);
+		expect(res.body).toHaveProperty('length', 1);
+	});
+
+	it('should update a Todo post', async () => {
+		const res = await request(app)
+			.post('/api/todos/update')
+			.send({
+				id: testId,
+				action: 'Updated Todo Item',
+			});
+		expect(res.statusCode).toEqual(200);
+		expect(res.body).toHaveProperty('success');
+	});
+
+	it('should retrieve a single Todo post', async () => {
+		const res = await request(app)
+			.get(`/api/todos/${testId}`);
+		expect(res.statusCode).toEqual(200);
+		expect(res.body).toHaveProperty('action', 'Updated Todo Item');
+	});
+
+	it('should delete a single Todo post', async () => {
+		const res = await request(app)
+			.delete(`/api/todos/${testId}`);
+		expect(res.statusCode).toEqual(200);
+		expect(res.body).toHaveProperty('success');
 	});
 
 	afterAll(async () => {

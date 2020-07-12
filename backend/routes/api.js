@@ -29,7 +29,7 @@ router.post('/todos/create', (req, res, next) => {
 });
 
 router.post('/todos/update', (req, res) => {
-	Todo.findOneAndUpdate({ _id: req.body.id }, req.body)
+	Todo.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true })
 		.then(() => res.json({ success: true }))
 		.catch((err) => res.status(400).json({ error: err }));
 });

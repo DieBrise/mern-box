@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 
-const atlas = process.env.ATLAS_URI;
+const atlas = process.env.NODE_ENV === 'test' ? process.env.ATLAS_TEST_URI : process.env.ATLAS_URI;
 
 app.use(cors());
 

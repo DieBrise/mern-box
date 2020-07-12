@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --ignore-path .gitignore . && jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles",
     "lint": "eslint --ignore-path .gitignore .",
     "start": "node server.js",
     "dev": "nodemon server.js"
