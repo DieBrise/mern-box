@@ -49,10 +49,15 @@ describe('Todo CRUD Endpoints', () => {
 	});
 
 	it('should delete a single Todo post', async () => {
-		const res = await request(app)
+		const res1 = await request(app)
 			.delete(`/api/todos/${testId}`);
-		expect(res.statusCode).toEqual(200);
-		expect(res.body).toHaveProperty('success');
+		expect(res1.statusCode).toEqual(200);
+		expect(res1.body).toHaveProperty('success');
+
+		const res2 = await request(app)
+			.get('/api/todos');
+		expect(res2.statusCode).toEqual(200);
+		expect(res2.body).toHaveProperty('length', 0);
 	});
 
 	afterAll(async () => {
