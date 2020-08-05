@@ -10,7 +10,6 @@
 		"linebreak-style": 0
 	},
 	"env": {
-		"es6": true,
-		"jest": true
+		"es6": true
 	}
 }
