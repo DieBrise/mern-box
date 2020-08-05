@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 export default class Input extends Component {
-
-	state = {
-		action: ""
-	}
+	constructor() {
+		this.state = {
+			action: ""
+		};
+	};
 
 	addTodo = () => {
 		const task = { action: this.state.action };
