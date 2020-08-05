@@ -3,12 +3,13 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const routes = require('./routes/api');
+const Config = require('./config');
 
 require('dotenv').config();
 
 const app = express();
 
-const atlas = process.env.NODE_ENV === 'test' ? process.env.ATLAS_TEST_URI : process.env.ATLAS_URI;
+const { atlas, port } = Config;
 
 app.use(cors());
 
@@ -22,8 +23,7 @@ app.use(bodyParser.json());
 app.use('/api', routes);
 
 app.use((err, req, res, next) => {
-	// console.log(log);
 	next();
 });
 
-module.exports = app;
+module.exports = { app, port };

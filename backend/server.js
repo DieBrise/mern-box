@@ -1,5 +1,5 @@
-const app = require('./index');
+const { app, port } = require('./index');
 
-app.listen(5000, async () => {
+app.listen(port, async () => {
 	// console.log('Server running on port 5000');
 });

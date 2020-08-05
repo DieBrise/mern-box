@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 
 const mongoose = require('mongoose');
 const request = require('supertest');
-const app = require('../index');
+const { app } = require('../index');
 
 const Todo = require('../models/todo');
 
