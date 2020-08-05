@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
+import PropTypes from "prop-types";
 
 export default class Input extends Component {
 	constructor() {
@@ -12,7 +13,7 @@ export default class Input extends Component {
 		const task = { action: this.state.action };
 
 		if (task.action && task.action.length > 0) {
-			axios.post('/api/todos', task)
+			axios.post("/api/todos", task)
 				.then(res => {
 					if (res.data) {
 						this.props.getTodos();
@@ -32,7 +33,7 @@ export default class Input extends Component {
 	};
 
 	render() {
-		let { action } = this.state;
+		const { action } = this.state;
 		return (
 			<div>
 				<input type="text" onChange={ this.handleChange } value={ action }/>
@@ -40,4 +41,8 @@ export default class Input extends Component {
 			</div>
 		);
 	};
+}
+
+Input.propTypes = {
+	getTodos: PropTypes.func
 }

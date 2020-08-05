@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
-export default const ListTodo = ({ todos, deleteTodo }) => {
+const ListTodo = ({ todos, deleteTodo }) => {
 
 	return (
 		<ul>
@@ -9,9 +10,9 @@ export default const ListTodo = ({ todos, deleteTodo }) => {
 					(
 						todos.map(todo => {
 							return (
-							<li key={ todo._id } onClick={ () => deleteTodo(todo._id) }>{ todo.action }</li>
+								<li key={ todo._id } onClick={ () => deleteTodo(todo._id) }>{ todo.action }</li>
 							)
-						});
+						})
 					)
 					:
 					(
@@ -20,4 +21,11 @@ export default const ListTodo = ({ todos, deleteTodo }) => {
 			}
 		</ul>
 	)
-}
+};
+
+ListTodo.propTypes = {
+	todos: PropTypes.object,
+	deleteTodo: PropTypes.func
+};
+
+export default ListTodo;
